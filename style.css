@@ -1,0 +1,110 @@
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: linear-gradient(to right, #4a90e2, #6dd5fa);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+        }
+
+        nav a:hover {
+            color: yellow;
+            transition: 0.3s;
+        }
+
+        section {
+            margin: 20px;
+            padding: 20px;
+            border: 2px solid #ddd;
+            background: white;
+            box-shadow: 2px 2px 8px gray;
+        }
+
+        article {
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        /* Flexbox Layout */
+        .flex-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 200px;
+            background: #e3f2fd;
+            padding: 20px;
+            border: 1px solid #999;
+            text-align: center;
+        }
+
+        /* Animation */
+        .animate-box {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            animation: move 3s infinite alternate;
+        }
+
+        @keyframes move {
+            from {transform: translateX(0);}
+            to {transform: translateX(100px);}
+        }
+
+        /* JS Image */
+        #zoomImage {
+            width: 200px;
+            transition: transform 0.4s;
+        }
+
+        /* Canvas */
+        canvas {
+            border: 1px solid black;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 15px;
+        }
+
+        /* Media Query */
+        @media(max-width:768px){
+            .flex-container{
+                flex-direction: column;
+            }
+
+            nav{
+                text-align:center;
+            }
+
+            nav a{
+                display:block;
+                margin:8px;
+            }
+        }
+
+
+    
