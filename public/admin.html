@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meridian FC | Admin</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <section id="loginPanel" class="admin-panel">
+      <p class="minute-marker">MERIDIAN FC &mdash; ADMIN</p>
+      <h1>Control Room Login</h1>
+      <p>Sign in to view academy registrations and scouting requests.</p>
+      <form id="adminLoginForm" class="admin-form">
+        <label for="adminUsername">Username</label>
+        <input id="adminUsername" name="username" autocomplete="username" required>
+        <label for="adminPassword">Password</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button class="btn-whistle" type="submit">Sign in</button>
+        <p id="loginMessage" class="admin-message" role="alert"></p>
+      </form>
+    </section>
+
+    <section id="dashboardPanel" class="admin-panel hidden">
+      <div class="admin-heading">
+        <div>
+          <p class="minute-marker">MERIDIAN FC &mdash; ADMIN</p>
+          <h1>Saved submissions</h1>
+        </div>
+        <div class="admin-actions">
+          <button id="refreshButton" class="btn-ghost" type="button">Refresh</button>
+          <button id="logoutButton" class="btn-ghost" type="button">Log out</button>
+        </div>
+      </div>
+      <p id="dashboardMessage" class="admin-message" role="status"></p>
+      <div class="admin-stats">
+        <div><strong id="academyCount">0</strong><span>Academy registrations</span></div>
+        <div><strong id="scoutingCount">0</strong><span>Scouting requests</span></div>
+      </div>
+      <h2>Academy registrations</h2>
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Mobile</th><th>Submitted</th></tr></thead><tbody id="academyRows"></tbody></table></div>
+      <h2>Scouting requests</h2>
+      <div class="table-wrap"><table><thead><tr><th>Name</th><th>Opponent club</th><th>Notes</th><th>Status</th><th>Submitted</th></tr></thead><tbody id="scoutingRows"></tbody></table></div>
+    </section>
+  </main>
+  <script src="js/admin.js"></script>
+</body>
+</html>
