@@ -1,0 +1,21 @@
+.admin-page { min-height: 100vh; background: var(--night); }
+.admin-shell { width: min(1180px, 100%); margin: 0 auto; padding: 3rem 1.5rem; }
+.admin-panel { background: rgba(241,250,238,.08); border: 1px solid rgba(241,250,238,.15); border-radius: var(--radius-lg); padding: clamp(1.5rem, 4vw, 3rem); box-shadow: var(--shadow-soft); }
+.admin-panel h1 { font-size: clamp(2rem, 5vw, 3rem); }
+.admin-panel h2 { margin-top: 2.5rem; color: var(--floodlight); }
+.admin-form { display: grid; gap: .55rem; max-width: 440px; margin-top: 2rem; }
+.admin-form input { border: 1px solid rgba(241,250,238,.35); border-radius: var(--radius-md); padding: .8rem; font: inherit; }
+.admin-form .btn-whistle { margin-top: .75rem; }
+.admin-message { min-height: 1.5em; color: var(--floodlight); }
+.admin-heading { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-start; }
+.admin-actions { display: flex; gap: .6rem; }
+.admin-stats { display: flex; flex-wrap: wrap; gap: 1rem; margin: 2rem 0; }
+.admin-stats div { min-width: 190px; padding: 1rem; background: rgba(20,83,45,.7); border-radius: var(--radius-md); }
+.admin-stats strong, .admin-stats span { display: block; }
+.admin-stats strong { font: 2rem var(--font-display); color: var(--floodlight); }
+.admin-stats span { font-size: .85rem; }
+.table-wrap { overflow-x: auto; }
+.admin-panel table { width: 100%; border-collapse: collapse; min-width: 680px; }
+.admin-panel th, .admin-panel td { text-align: left; padding: .8rem; border-bottom: 1px solid rgba(241,250,238,.15); vertical-align: top; }
+.admin-panel th { color: var(--floodlight); font-family: var(--font-heading); text-transform: uppercase; font-size: .8rem; }
+@media (max-width: 650px) { .admin-heading { flex-direction: column; } .admin-actions { width: 100%; } }

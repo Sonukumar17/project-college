@@ -135,6 +135,10 @@ toggleBenchBtn.addEventListener('click', () => {
 // =========================================================
 // 60' ACADEMY REGISTRATION — client-side validation
 // =========================================================
+const API_BASE_URL = window.location.port === '5000' || window.location.protocol === 'file:'
+  ? ''
+  : 'http://localhost:5001';
+
 const regForm = document.getElementById('regForm');
 const regSuccess = document.getElementById('regSuccess');
 
@@ -228,15 +232,55 @@ function validateForm() {
   return isValid;
 }
 
-regForm.addEventListener('submit', (event) => {
+regForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const success = validateForm();
   if (success) {
-    regSuccess.classList.remove('hidden');
-    regForm.reset();
-    Object.values(fields).forEach(input => input.classList.remove('valid'));
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/submissions/academy`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: fields.regName.value.trim(),
+          email: fields.regEmail.value.trim(),
+          password: fields.regPassword.value,
+          mobile: fields.regMobile.value.trim(),
+        }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || 'Registration failed.');
+      regSuccess.textContent = data.message;
+      regSuccess.classList.remove('hidden');
+      regForm.reset();
+      Object.values(fields).forEach(input => input.classList.remove('valid'));
+    } catch (error) {
+      regSuccess.textContent = error.message;
+      regSuccess.classList.remove('hidden');
+    }
   } else {
     regSuccess.classList.add('hidden');
+  }
+});
+
+const scoutForm = document.getElementById('scoutForm');
+const scoutMessage = document.getElementById('scoutMessage');
+
+scoutForm.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const formData = new FormData(scoutForm);
+  scoutMessage.textContent = 'Sending...';
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/submissions/scouting`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(formData.entries())),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Request failed.');
+    scoutMessage.textContent = data.message;
+    scoutForm.reset();
+  } catch (error) {
+    scoutMessage.textContent = error.message;
   }
 });
 
